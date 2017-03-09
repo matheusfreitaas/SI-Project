@@ -1,1 +1,24 @@
-<h1>LOGIN</h1>
+<form name="loginForm">
+	<md-content layout-padding>
+	    <div>
+	        <md-input-container layout-gt-sm="row">
+	        	<label>Usuário</label>
+	        	<input type="text" ng-model="user.login" required>
+	      	</md-input-container>
+		</div>
+	</md-content>
+	<md-content layout-padding>
+	    <div>
+	        <md-input-container layout-gt-sm="row">
+	        	<label>Usuário</label>
+	        	<input type="password" ng-model="user.password" required>
+	      	</md-input-container>
+		</div>
+	</md-content>
+	<md-checkbox ng-model="user.rememberMe" class="md-primary">
+    	Lembrar-me
+    </md-checkbox>
+</form>
+<div>
+	<md-button ng-disabled="loginForm.$invalid" class="md-raised md-primary">Login</md-button>
+</div>
