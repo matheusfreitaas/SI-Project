@@ -19,5 +19,21 @@ angular.module('ad-extreme', ['ui.router', 'ngMaterial'])
         .state('register', {
             url: '/register',
             templateUrl: 'views/register.html'
+        })
+
+        .state('user', {
+            url: '/user',
+            templateUrl: 'views/user.html'
+        })
+
+        .state('adList', {
+            url: '/adList',
+            templateUrl: 'views/adList.html'
+        })
+
+        .state('adRegister', {
+            url: '/adRegister',
+            templateUrl: 'views/adRegister.html'
         });
+
 }]);
