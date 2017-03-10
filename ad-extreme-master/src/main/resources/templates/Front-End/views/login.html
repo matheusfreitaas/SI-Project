@@ -1,15 +1,14 @@
 <nav class="nav navbar navbar-default navbar-fixed-top">
-  		<div class="container-fluid">
-    		<ul class="nav navbar-nav">
-    			<li><a href="#home"><font color="white">$ ad-extreme</font></a></li>
-    		</ul>
-    		<ul class="nav navbar-nav navbar-right" style="margin-right: 20px">
-    			<li><a href="#register"><font color="white">Cadastro</font></a></li>
-    			<li><a href="#login"><font color="white">Login</font></a></li>
-    		</ul>
-  		</div>
-	</nav>
-
+	<div class="container-fluid">
+   		<ul class="nav navbar-nav">
+   			<li><a href="#home"><font color="white">$ ad-extreme</font></a></li>
+   		</ul>
+   		<ul class="nav navbar-nav navbar-right" style="margin-right: 20px">
+   			<li><a href="#register"><font color="white">Cadastro</font></a></li>
+   			<li><a href="#login"><font color="white">Login</font></a></li>
+   		</ul>
+	</div>
+</nav>
 <div class="appForm">
 	<h3 class="title">Login</h3>
 	<md-divider></md-divider>
@@ -34,7 +33,8 @@
 	    	Lembrar-me
 	    </md-checkbox>
 	</form>
+	{{user}}
 	<div>
-		<md-button ng-disabled="loginForm.$invalid" class="md-raised md-primary">Login</md-button>
+		<md-button ng-click="singIn(user)" ng-disabled="loginForm.$invalid" class="md-raised md-primary">Login</md-button>
 	</div>
 </div>

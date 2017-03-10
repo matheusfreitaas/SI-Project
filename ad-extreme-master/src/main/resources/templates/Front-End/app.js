@@ -6,6 +6,12 @@ angular.module('ad-extreme', ['ui.router', 'ngMaterial'])
     
     $stateProvider
 
+        /*.state('app', {
+            abstract: true,
+            url: '/app',
+            templateUrl: 'views/app.html'
+        })*/
+
         .state('home', {
             url: '/home',
             templateUrl: 'views/home.html'
@@ -13,12 +19,14 @@ angular.module('ad-extreme', ['ui.router', 'ngMaterial'])
 
         .state('login', {
             url: '/login',
-            templateUrl: 'views/login.html'
+            templateUrl: 'views/login.html',
+            controller: 'loginCtrl'
         })
 
         .state('register', {
             url: '/register',
-            templateUrl: 'views/register.html'
+            templateUrl: 'views/register.html',
+            controller: 'registerCtrl'
         })
 
         .state('user', {
