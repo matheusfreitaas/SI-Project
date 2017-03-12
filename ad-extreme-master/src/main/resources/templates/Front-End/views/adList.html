@@ -11,4 +11,29 @@
  	</div>
 </nav>
 
-<h1 style="margin-top: 80px">LISTAGEM DE ANUNCIOS</h1>
+<div class="appTable">
+	<h1>Anúncios</h1>
+	<div ng-if="isEmpty(adList)">
+		<h4>Nenhum anúncio listado</h4>
+	</div>
+	<div class= "table-responsive">
+		<table class="table-bordered table-hover" style="width:100%">
+		  <thead>
+				<tr>
+					<th>Título</th>
+					<th>Tipo</th>
+					<th>Postado</th>
+					<th>Preço</th>
+				</tr>
+			</thead>
+		  <tbody>
+				<tr ng-repeat="ad in adList">
+					<td>{{ad.title}}</td>
+					<td>{{ad.type}}</td>
+					<td>{{ad.date}}</td>
+					<td>{{ad.price}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
