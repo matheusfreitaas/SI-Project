@@ -1,23 +1,22 @@
 angular.module("ad-extreme")
 
-.controller("adListCtrl", ['$scope','$state','$mdToast', function ($scope, $state, $mdToast) {
+.controller("adListCtrl", ['$scope','$state','$mdToast', function ($scope, $state, $mdToast, RestService) {
 
 	var myScope = $scope;
 
-	myScope.adList = [
-		{
-			title: "title1",
-			type: "type1",
-			date: "date1",
-			price: "price1"
-		},
-		{
-			title: "title2",
-			type: "type2",
-			date: "date2",
-			price: "price2"
-		}
-	]
+	var adRoute = 
+
+	myScope.adList = [];
+
+	getAds();
+
+	function getAds() {
+		console.log("entrou")
+		RestService.find("/user/listar/anuncios", function(response) {
+			console.log("chegou")
+			myScope.adList = response.data;
+		});
+	};
 
 	function goTo(state){
 		$state.go(state);

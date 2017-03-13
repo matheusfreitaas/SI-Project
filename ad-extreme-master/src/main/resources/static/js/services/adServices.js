@@ -31,6 +31,7 @@ angular.module("ad-extreme")
 	var initialUrl = "http://localhost:8080";
 
 	restFactory.find = function(url, callback) {
+		console.log("entrou no find")
 		HttpRequestService(initialUrl + url, "GET", {}, callback);
 	};
 
