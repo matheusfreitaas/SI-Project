@@ -45,21 +45,21 @@
 		      	</md-input-container>
 			</div>
 		</md-content>
-		<!--md-content layout-padding>
-		    <div>
-		        <md-input-container layout-gt-sm="row">
-		        	<label>Razão Social</label>
-		        	<md-select ng-model="user.type" placeholder="Razão Social" required>
-		          		<md-option value="normal">Pessoa Fisica</md-option>
-		          		<md-option value="company">Pessoa Juridica</md-option>
-		       		</md-select>
-		      	</md-input-container>
-			</div>
-		</md-content-->
+		<md-content layout-padding>
+			<h4>Razão Social:</h4>
+			<section layout="row" layout-align="center" layout-wrap>
+				<md-radio-group layout="row" ng-model="user.type" required>
+					<md-radio-button value="normal" class="md-primary">Pessoa Física</md-radio-button>
+					<md-radio-button value="company" class="md-primary">Pessoa Jurídica</md-radio-button>
+				</md-radio-group>
+			</section>
+		</md-content>
 		{{user}}
 	</form>
 	<div>
-		<md-button ng-disabled="registerForm.$invalid" class="md-raised md-primary">Cadastrar-se</md-button>
-		<md-button class="md-raised md-primary">Limpar</md-button>
+		<md-button ng-click="registration(user)" ng-disabled="registerForm.$invalid" class="btn btn-success">
+			Cadastrar-se
+		</md-button>
+		<md-button ng-click="cleanForm()" class="btn btn-danger">Limpar</md-button>
 	</div>
 </div>

@@ -36,12 +36,14 @@ angular.module('ad-extreme', ['ui.router', 'ngMaterial'])
 
         .state('adList', {
             url: '/adList',
-            templateUrl: 'views/adList.html'
+            templateUrl: 'views/adList.html',
+            controller: 'adListCtrl'
         })
 
         .state('adRegister', {
             url: '/adRegister',
-            templateUrl: 'views/adRegister.html'
+            templateUrl: 'views/adRegister.html',
+            controller: 'adRegisterCtrl'
         });
 
 }]);
