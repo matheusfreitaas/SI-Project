@@ -52,7 +52,7 @@ public class AnuncioServiceImpl implements AnuncioService {
     }
 
     @Override
-    public Collection<Anuncio> getAll() {
+    public Collection<Anuncio> findAll() {
         /*aqui retornamos todos os anuncios, sem distincao*/
 
         return anuncioRepository.findAll();
@@ -61,7 +61,7 @@ public class AnuncioServiceImpl implements AnuncioService {
     @Override
     public boolean update(Anuncio anuncio) {
         /*a atualizacao do anuncio eh feita apenas se o anuncio ja existir*/
-        if (anuncioRepository.exists(anuncio.get_id())) {
+        if (anuncioRepository.exists(anuncio.getId())) {
             anuncioRepository.save(anuncio);
             return true;
         }
@@ -71,8 +71,6 @@ public class AnuncioServiceImpl implements AnuncioService {
     @Override
     public boolean delete(Long id) {
         /*aqui se apaga o anuncio se ele existir*/
-
-
         if (anuncioRepository.exists(id)) {
             anuncioRepository.delete(id);
             return true;

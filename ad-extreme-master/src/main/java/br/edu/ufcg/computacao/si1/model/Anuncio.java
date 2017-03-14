@@ -12,7 +12,7 @@ import java.util.Date;
 @Table(name="tb_anuncio")
 public class Anuncio {
 
-    private static final String[] tipos = new String[] {"movel", "imovel", "emprego"};
+    //private static final String[] tipos = new String[] {"movel", "imovel", "emprego"};
 
 
     private final static DateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
@@ -57,14 +57,15 @@ public class Anuncio {
      * Retorna o id do anuncio
      * @return o id do anuncio
      */
-    public Long get_id() {
+    public Long getId() {
         return _id;
     }
 
     /**
      * Modifica o id do anuncio
      * @param _id id a ser colocado no anuncio
-     */public void set_id(Long _id) {
+     */
+    public void setId(Long _id) {
         this._id = _id;
     }
 
@@ -116,7 +117,7 @@ public class Anuncio {
         Anuncio anuncio = (Anuncio) o;
 
         if (Double.compare(anuncio.getPreco(), getPreco()) != 0) return false;
-        if (!get_id().equals(anuncio.get_id())) return false;
+        if (!getId().equals(anuncio.getId())) return false;
         if (!getTitulo().equals(anuncio.getTitulo())) return false;
         if (!getDataDeCriacao().equals(anuncio.getDataDeCriacao())) return false;
         if (getNota() != null ? !getNota().equals(anuncio.getNota()) : anuncio.getNota() != null) return false;
@@ -128,7 +129,7 @@ public class Anuncio {
     public int hashCode() {
         int result;
         long temp;
-        result = get_id().hashCode();
+        result = getId().hashCode();
         result = 31 * result + getTitulo().hashCode();
         result = 31 * result + getDataDeCriacao().hashCode();
         temp = Double.doubleToLongBits(getPreco());

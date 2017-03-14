@@ -21,7 +21,8 @@ public class CompanyAnuncioController {
 
     @RequestMapping(value = "/company/cadastrar/anuncio", method = RequestMethod.GET)
     public ModelAndView getPageCadastarAnuncio(AnuncioForm anuncioForm){
-        ModelAndView model = new ModelAndView();
+       
+    	ModelAndView model = new ModelAndView();
 
         model.addObject("tipos", anuncioForm.getTipos());
         model.setViewName("company/cadastrar_anuncio");
@@ -31,7 +32,8 @@ public class CompanyAnuncioController {
 
     @RequestMapping(value = "/company/listar/anuncios", method = RequestMethod.GET)
     public ModelAndView getPageListarAnuncios(){
-        ModelAndView model = new ModelAndView();
+        
+    	ModelAndView model = new ModelAndView();
 
         model.addObject("anuncios", anuncioService.getAnuncioRepository().findAll());
 

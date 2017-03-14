@@ -16,10 +16,10 @@ public interface AnuncioService {
 
     Collection<Anuncio> get(String tipo);
 
-    Collection<Anuncio> getAll();
-
     boolean update(Anuncio anuncio);
 
     boolean delete(Long id);
+
+	Collection<Anuncio> findAll();
 
 }

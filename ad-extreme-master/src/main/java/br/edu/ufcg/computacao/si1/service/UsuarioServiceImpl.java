@@ -23,19 +23,13 @@ public class UsuarioServiceImpl implements UsuarioService{
     public Usuario create(UsuarioForm usuarioForm) {
 
         Usuario usuario=null;
-
-        switch (usuarioForm.getRole()){
-            case 1:
-                usuario = new Usuario(usuarioForm.getNome(), usuarioForm.getEmail(),
-                        usuarioForm.getSenha(), "USER");
-                break;
-            case 2:
-                usuario = new Usuario(usuarioForm.getNome(), usuarioForm.getEmail(),
-                        usuarioForm.getSenha(), "COMPANY");
-
-                //new BCryptPasswordEncoder().encode(usuarioForm.getSenha()), "COMPANY");
-                usuario.setR("COMPANY");
-                break;
+        
+        if(usuarioForm.getRole() == 1){
+        	usuario = new Usuario(usuarioForm.getNome(), usuarioForm.getEmail(),
+                    usuarioForm.getSenha(), "USER");
+        } else if(usuarioForm.getRole() == 2) {
+        	usuario = new Usuario(usuarioForm.getNome(), usuarioForm.getEmail(),
+                    usuarioForm.getSenha(), "COMPANY");
         }
 
         System.out.println(usuario + "estah sendo criado");
@@ -62,7 +56,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     public boolean update(Usuario usuario) {
         System.out.println(usuario + "estah sendo atualizado");
 
-        if (usuarioRepository.exists(usuario.getId())) {
+        if(usuarioRepository.exists(usuario.getId())) {
             usuarioRepository.save(usuario);
             return true;
         }
@@ -71,7 +65,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public boolean delete(Long id) {
-        if (usuarioRepository.exists(id)) {
+        if(usuarioRepository.exists(id)) {
             usuarioRepository.delete(id);
             return true;
         }
