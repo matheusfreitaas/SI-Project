@@ -1,6 +1,8 @@
 package br.edu.ufcg.computacao.si1.service;
 
+import br.edu.ufcg.computacao.si1.factories.AnuncioFactory;
 import br.edu.ufcg.computacao.si1.model.Anuncio;
+import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
 import br.edu.ufcg.computacao.si1.repository.AnuncioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,17 +20,30 @@ public class AnuncioServiceImpl implements AnuncioService {
     //TODO add validity checks
 
     private AnuncioRepository anuncioRepository;
+    
+    private AnuncioFactory factory;
 
     @Autowired
     public AnuncioServiceImpl(AnuncioRepository anuncioRepository) {
         /*neste codigo apenas atribuimos o repositorio jpa ao atributo */
         this.anuncioRepository = anuncioRepository;
+        this.factory = new AnuncioFactory();
     }
 
     public AnuncioRepository getAnuncioRepository(){
         return this.anuncioRepository;
     }
 
+    @Override
+    public Anuncio cria(AnuncioForm anuncioForm) {
+        /*aqui salvamos o anuncio recem criado no repositorio jpa*/
+    	
+    	Anuncio anuncio = factory.criaAnuncio(anuncioForm);
+    	
+    	System.out.println(anuncio);
+        return anuncioRepository.save(anuncio);
+    }
+    
     @Override
     public Anuncio create(Anuncio anuncio) {
         /*aqui salvamos o anuncio recem criado no repositorio jpa*/

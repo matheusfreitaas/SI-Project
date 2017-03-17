@@ -37,9 +37,8 @@ public class Anuncio {
     @Column(name = "tipo", nullable = false)
     private String tipo;
     
-    @ManyToOne
-    @JoinColumn(name="usuario_id")
-    private Usuario criador;
+    @JoinColumn(name="usuario_email")
+    private String emailCriador;
 
     public Anuncio(String titulo, Date dataDeCriacao, double preco, String nota, String tipo) {
         this.titulo = titulo;
@@ -47,6 +46,15 @@ public class Anuncio {
         this.preco = preco;
         this.nota = nota;
         this.tipo = tipo;
+    }
+    
+    public Anuncio(String titulo, double preco, String tipo, String emailUsuario) {
+        this.titulo = titulo;
+        this.dataDeCriacao = new Date();
+        this.preco = preco;
+        this.nota = "";
+        this.tipo = tipo;
+        this.emailCriador = emailUsuario;
     }
 
     public Anuncio() {
@@ -113,12 +121,12 @@ public class Anuncio {
         this.tipo = tipo;
     }
 
-    public Usuario getCriador() {
-		return criador;
+    public String getEmailCriador() {
+		return emailCriador;
 	}
 
-	public void setCriador(Usuario criador) {
-		this.criador = criador;
+	public void setEmailCriador(String email) {
+		this.emailCriador = email;
 	}
 
 	@Override
@@ -159,7 +167,7 @@ public class Anuncio {
                 ", dataDeCriacao=" + getDataDeCriacao() +
                 ", preco=" + preco +
                 ", nota=" + nota +
-                ", tipo='" + tipo + '\'' + "Dono: "+criador.getNome()+
+                ", tipo='" + tipo + '\'' + "Dono: "+emailCriador+
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package br.edu.ufcg.computacao.si1.service;
 
+import br.edu.ufcg.computacao.si1.factories.UsuarioFactory;
 import br.edu.ufcg.computacao.si1.model.Usuario;
 import br.edu.ufcg.computacao.si1.model.form.UsuarioForm;
 import br.edu.ufcg.computacao.si1.repository.UsuarioRepository;
@@ -13,24 +14,19 @@ import java.util.Optional;
 public class UsuarioServiceImpl implements UsuarioService{
 
     private UsuarioRepository usuarioRepository;
+    
+    private UsuarioFactory factory;
 
     @Autowired
     public void setUsuarioRepository(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
+        this.factory = new UsuarioFactory();
     }
 
     @Override
     public Usuario create(UsuarioForm usuarioForm) {
 
-        Usuario usuario=null;
-        
-        if(usuarioForm.getRole() == 1){
-        	usuario = new Usuario(usuarioForm.getNome(), usuarioForm.getEmail(),
-                    usuarioForm.getSenha(), "USER");
-        } else if(usuarioForm.getRole() == 2) {
-        	usuario = new Usuario(usuarioForm.getNome(), usuarioForm.getEmail(),
-                    usuarioForm.getSenha(), "COMPANY");
-        }
+        Usuario usuario = factory.criaUsuario(usuarioForm);
 
         System.out.println(usuario + "estah sendo criado");
         return usuarioRepository.save(usuario);
