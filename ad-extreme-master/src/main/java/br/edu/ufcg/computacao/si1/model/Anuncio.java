@@ -36,6 +36,10 @@ public class Anuncio {
 
     @Column(name = "tipo", nullable = false)
     private String tipo;
+    
+    @ManyToOne
+    @JoinColumn(name="usuario_id")
+    private Usuario criador;
 
     public Anuncio(String titulo, Date dataDeCriacao, double preco, String nota, String tipo) {
         this.titulo = titulo;
@@ -109,7 +113,15 @@ public class Anuncio {
         this.tipo = tipo;
     }
 
-    @Override
+    public Usuario getCriador() {
+		return criador;
+	}
+
+	public void setCriador(Usuario criador) {
+		this.criador = criador;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Anuncio)) return false;
@@ -147,7 +159,7 @@ public class Anuncio {
                 ", dataDeCriacao=" + getDataDeCriacao() +
                 ", preco=" + preco +
                 ", nota=" + nota +
-                ", tipo='" + tipo + '\'' +
+                ", tipo='" + tipo + '\'' + "Dono: "+criador.getNome()+
                 '}';
     }
 }

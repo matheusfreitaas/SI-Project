@@ -32,6 +32,7 @@ public class AnuncioServiceImpl implements AnuncioService {
     @Override
     public Anuncio create(Anuncio anuncio) {
         /*aqui salvamos o anuncio recem criado no repositorio jpa*/
+    	System.out.println(anuncio);
         return anuncioRepository.save(anuncio);
     }
 

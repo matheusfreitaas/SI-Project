@@ -71,4 +71,8 @@ public class UsuarioServiceImpl implements UsuarioService{
         }
         return false;
     }
+    
+    public Usuario getUsuarioPeloEmail(String email){
+    	return usuarioRepository.findByEmail(email);
+    }
 }

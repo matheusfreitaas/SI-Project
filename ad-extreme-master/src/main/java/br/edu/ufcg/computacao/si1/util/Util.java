@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class Util {
 
-	public static String userNameUsuarioLogado() {
+	public static String emailUsuarioLogado() {
 		Object usuarioLogado = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		return usuarioLogado instanceof UserDetails ? ((UserDetails) usuarioLogado).getUsername()
