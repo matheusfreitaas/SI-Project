@@ -10,7 +10,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name="tb_anuncio")
-public class Anuncio {
+public abstract class Anuncio {
 
     //private static final String[] tipos = new String[] {"movel", "imovel", "emprego"};
 
