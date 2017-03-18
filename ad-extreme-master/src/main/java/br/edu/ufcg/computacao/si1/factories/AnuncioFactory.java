@@ -10,24 +10,24 @@ import br.edu.ufcg.computacao.si1.util.Util;
 
 public class AnuncioFactory {
 	
-	private final String ANUNCIO_MOVEL = "MOVEL";
-	private final String ANUNCIO_IMOVEL = "IMOVEL";
-	private final String ANUNCIO_EMPREGO = "EMPREGO";
-	private final String ANUNCIO_SERVICO = "SERVIÇO";
+	private final String ANUNCIO_MOVEL = "movel";
+	private final String ANUNCIO_IMOVEL = "imovel";
+	private final String ANUNCIO_EMPREGO = "emprego";
+	private final String ANUNCIO_SERVICO = "serviço";
 	
 	public Anuncio criaAnuncio(AnuncioForm anuncioForm){
 		
 		Anuncio novoAnuncio;
 		
-		if(anuncioForm.getTipo().toUpperCase().equals(ANUNCIO_MOVEL)){
+		if(anuncioForm.getTipo().equals(ANUNCIO_MOVEL)){
 			novoAnuncio = new AnuncioMovel(anuncioForm.getTitulo(), anuncioForm.getPreco(),
 					anuncioForm.getTipo(), Util.emailUsuarioLogado());
 			
-		}else if(anuncioForm.getTipo().toUpperCase().equals(ANUNCIO_IMOVEL)){
+		}else if(anuncioForm.getTipo().equals(ANUNCIO_IMOVEL)){
 			novoAnuncio = new AnuncioImovel(anuncioForm.getTitulo(), anuncioForm.getPreco(),
 					anuncioForm.getTipo(), Util.emailUsuarioLogado());
 			
-		}else if(anuncioForm.getTipo().toUpperCase().equals(ANUNCIO_EMPREGO)){
+		}else if(anuncioForm.getTipo().equals(ANUNCIO_EMPREGO)){
 			novoAnuncio = new AnuncioEmprego(anuncioForm.getTitulo(), anuncioForm.getPreco(),
 					anuncioForm.getTipo(), Util.emailUsuarioLogado());
 			
