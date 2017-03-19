@@ -2,6 +2,11 @@ package br.edu.ufcg.computacao.si1.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity(name="AnuncioServico")
+@Table(name="tb_anuncio_servico")
 public class AnuncioServico extends Anuncio {
 
 	public AnuncioServico(String titulo, double preco, String tipo, String emailUsuario){

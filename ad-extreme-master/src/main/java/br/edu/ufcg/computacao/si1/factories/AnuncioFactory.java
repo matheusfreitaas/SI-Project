@@ -31,9 +31,11 @@ public class AnuncioFactory {
 			novoAnuncio = new AnuncioEmprego(anuncioForm.getTitulo(), anuncioForm.getPreco(),
 					anuncioForm.getTipo(), Util.emailUsuarioLogado());
 			
-		}else{//Anuncio de serviço
+		}else if(anuncioForm.getTipo().equals(ANUNCIO_SERVICO)){//Anuncio de serviço
 			novoAnuncio = new AnuncioServico(anuncioForm.getTitulo(), anuncioForm.getPreco(),
 					anuncioForm.getTipo(), Util.emailUsuarioLogado());
+		}else{
+			throw new RuntimeException();
 		};
 		
 		return novoAnuncio;
