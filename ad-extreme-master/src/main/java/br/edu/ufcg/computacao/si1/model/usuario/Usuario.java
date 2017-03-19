@@ -23,6 +23,12 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
     
     @Column
     private String role;
+    
+    @Column
+    private double credito;
+    
+    @Column
+    private double debito;
 
     public Usuario() {
         super("default", "default", AuthorityUtils.createAuthorityList("USER"));
@@ -36,6 +42,8 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
         this.email = email;
         this.senha = senha;
         this.role = role;
+        this.credito = 0;
+        this.debito = 0;
     }
 
     public Long getId() {
@@ -76,6 +84,18 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
 
     public void setRole(String role) {
         this.role = role;
+    }
+    
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "_id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email=" + email +
+                ", role=" + role +
+                ", credito=" + credito +
+                ", debito=" + debito +
+                '}';
     }
 
 }
