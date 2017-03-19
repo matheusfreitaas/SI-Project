@@ -1,8 +1,12 @@
 package br.edu.ufcg.computacao.si1.service;
 
-import br.edu.ufcg.computacao.si1.model.Anuncio;
-import br.edu.ufcg.computacao.si1.model.Notas;
-import br.edu.ufcg.computacao.si1.repository.AnuncioRepository;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertTrue;
+
+import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,9 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Date;
-
-import static junit.framework.TestCase.*;
+import br.edu.ufcg.computacao.si1.model.Anuncio;
+import br.edu.ufcg.computacao.si1.model.AnuncioEmprego;
+import br.edu.ufcg.computacao.si1.model.AnuncioImovel;
+import br.edu.ufcg.computacao.si1.model.AnuncioMovel;
+import br.edu.ufcg.computacao.si1.model.Notas;
+import br.edu.ufcg.computacao.si1.repository.AnuncioRepository;
 
 /**
  * Created by Marcus Oliveira on 28/12/16.
@@ -33,9 +40,9 @@ public class AnuncioServiceTest {
 
     @Before
     public void setUp() {
-        anuncio1 = new Anuncio("Anuncio de Movel", new Date(), 100, Notas.notas[2], "movel");
-        anuncio2 = new Anuncio("Anuncio de Imovel", new Date(), 100000, Notas.notas[3], "imovel");
-        anuncio3 = new Anuncio("Anuncio de Emprego", new Date(), 0, Notas.notas[1], "emprego");
+        anuncio1 = new AnuncioMovel("Anuncio de Movel", new Date(), 100, Notas.notas[2], "movel");
+        anuncio2 = new AnuncioImovel("Anuncio de Imovel", new Date(), 100000, Notas.notas[3], "imovel");
+        anuncio3 = new AnuncioEmprego("Anuncio de Emprego", new Date(), 0, Notas.notas[1], "emprego");
     }
 
     @After

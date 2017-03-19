@@ -9,8 +9,8 @@ import java.util.Date;
  * Created by Marcus Oliveira on 08/12/16.
  */
 @Entity
-@Table(name="tb_anuncio")
-public class Anuncio {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Anuncio {
 
     //private static final String[] tipos = new String[] {"movel", "imovel", "emprego"};
 
