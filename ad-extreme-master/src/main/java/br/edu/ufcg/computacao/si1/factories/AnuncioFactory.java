@@ -1,10 +1,10 @@
 package br.edu.ufcg.computacao.si1.factories;
 
-import br.edu.ufcg.computacao.si1.model.Anuncio;
-import br.edu.ufcg.computacao.si1.model.AnuncioEmprego;
-import br.edu.ufcg.computacao.si1.model.AnuncioImovel;
-import br.edu.ufcg.computacao.si1.model.AnuncioMovel;
-import br.edu.ufcg.computacao.si1.model.AnuncioServico;
+import br.edu.ufcg.computacao.si1.model.anuncio.Anuncio;
+import br.edu.ufcg.computacao.si1.model.anuncio.AnuncioEmprego;
+import br.edu.ufcg.computacao.si1.model.anuncio.AnuncioImovel;
+import br.edu.ufcg.computacao.si1.model.anuncio.AnuncioMovel;
+import br.edu.ufcg.computacao.si1.model.anuncio.AnuncioServico;
 import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
 import br.edu.ufcg.computacao.si1.util.Util;
 
