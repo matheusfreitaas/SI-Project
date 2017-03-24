@@ -1,6 +1,6 @@
 package br.edu.ufcg.computacao.si1.factories;
 
-import br.edu.ufcg.computacao.si1.model.Usuario;
+import br.edu.ufcg.computacao.si1.model.usuario.Usuario;
 import br.edu.ufcg.computacao.si1.model.form.UsuarioForm;
 
 public class UsuarioFactory {

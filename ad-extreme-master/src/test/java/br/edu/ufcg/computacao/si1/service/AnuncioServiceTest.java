@@ -15,10 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.edu.ufcg.computacao.si1.model.Anuncio;
-import br.edu.ufcg.computacao.si1.model.AnuncioEmprego;
-import br.edu.ufcg.computacao.si1.model.AnuncioImovel;
-import br.edu.ufcg.computacao.si1.model.AnuncioMovel;
+import br.edu.ufcg.computacao.si1.model.anuncio.Anuncio;
+import br.edu.ufcg.computacao.si1.model.anuncio.AnuncioEmprego;
+import br.edu.ufcg.computacao.si1.model.anuncio.AnuncioImovel;
+import br.edu.ufcg.computacao.si1.model.anuncio.AnuncioMovel;
 import br.edu.ufcg.computacao.si1.model.Notas;
 import br.edu.ufcg.computacao.si1.repository.AnuncioRepository;
 
