@@ -9,6 +9,8 @@ import javax.validation.constraints.Size;
 public class AnuncioForm {
 
     private final String[] tipos = new String[] {"movel", "imovel", "emprego", "serviço"};
+    
+    private final String[] tiposUsuarioFisico = new String[] {"movel", "imovel"};
 
     @NotNull(message = "O titulo não pode ser nulo.")
     @NotEmpty(message = "O titulo não pode esta vazio.")
@@ -50,5 +52,9 @@ public class AnuncioForm {
     public String[] getTipos() {
         return tipos;
     }
+
+	public String[] getTiposUsuarioFisico() {
+		return tiposUsuarioFisico;
+	}
 }
 
