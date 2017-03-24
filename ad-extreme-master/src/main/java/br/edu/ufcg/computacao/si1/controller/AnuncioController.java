@@ -65,6 +65,8 @@ public class AnuncioController {
         attributes.addFlashAttribute("mensagem", "Anúncio cadastrado com sucesso!");
         return new ModelAndView("redirect:/user/cadastrar/anuncio");
     }
+    
+    
 
 
 }

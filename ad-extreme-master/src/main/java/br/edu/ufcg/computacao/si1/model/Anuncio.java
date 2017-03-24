@@ -12,7 +12,7 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Anuncio {
 
-    //private static final String[] tipos = new String[] {"movel", "imovel", "emprego"};
+    //private static final String[] tipos = new String[] {"movel", "imovel", "emprego", "serviço"};
 
 
     private final static DateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
