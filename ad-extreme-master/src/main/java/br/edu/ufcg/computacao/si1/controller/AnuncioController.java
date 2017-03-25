@@ -1,6 +1,5 @@
 package br.edu.ufcg.computacao.si1.controller;
 
-import br.edu.ufcg.computacao.si1.model.anuncio.Anuncio;
 import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
 import br.edu.ufcg.computacao.si1.service.AnuncioServiceImpl;
 import br.edu.ufcg.computacao.si1.util.Constantes;
@@ -8,6 +7,7 @@ import br.edu.ufcg.computacao.si1.util.Constantes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -86,18 +86,16 @@ public class AnuncioController {
      * @return Página com a listagem de todos os anúncios
      */
     @RequestMapping(value = Constantes.ROTA_COMPRAR_ANUNCIO, method = RequestMethod.POST)
-    public ModelAndView comprarAnuncio(@Valid Anuncio anuncio, BindingResult result, RedirectAttributes attributes){
+    public ModelAndView comprarAnuncio(@RequestBody String titulo, BindingResult result, RedirectAttributes attributes){
 
-    	System.out.println("entrou");
+    	System.out.println(titulo);
 
     	if(result.hasErrors()){
-           // return getPageCadastrarAnuncio(anuncioForm);
-    		return new ModelAndView();
+    		return new ModelAndView("redirect:/user/cadastrar/anuncio");
         }
     	
-        //anuncioService.comprar(anuncio);
+        anuncioService.comprarAnuncio(titulo);
 
-        attributes.addFlashAttribute(Constantes.MENSAGEM, Constantes.CADASTRO_ANUNCIO_SUCESSO);
         return new ModelAndView("redirect:/user/listar/anuncios");
     }
 

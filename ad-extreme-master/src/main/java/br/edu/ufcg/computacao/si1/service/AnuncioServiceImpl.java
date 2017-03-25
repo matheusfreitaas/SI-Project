@@ -129,17 +129,28 @@ public class AnuncioServiceImpl implements AnuncioService {
      * Faz a compra de um anúncio
      * @param anuncio Anúncio a ser comprado
      */
-    public void comprar(Anuncio anuncio){
-    	Usuario usuarioDebito = usuarioService.getUsuarioPeloEmail(Util.emailUsuarioLogado());
-    	Usuario usuarioCredito = usuarioService.getUsuarioPeloEmail(anuncio.getEmailCriador());
+    public void comprarAnuncio(String titulo){
+    	System.out.println("1111111111");
+    	System.out.println(titulo);
+    	//Anuncio anuncio = anuncioRepository.findByTitulo(titulo);
     	
+    	System.out.println("222222222");
+    	
+    	Usuario usuarioDebito = usuarioService.getUsuarioPeloEmail(Util.emailUsuarioLogado());
+    	//Usuario usuarioCredito = usuarioService.getUsuarioPeloEmail(anuncio.getEmailCriador());
+    	
+    	/*
     	double valor = anuncio.getPreco();
     	
     	usuarioDebito.setDebito(usuarioDebito.getDebito() + valor);
     	usuarioCredito.setCredito(usuarioCredito.getCredito() + valor);
     	
+    	System.out.println("444444444444");
+    	
     	usuarioService.update(usuarioDebito);
     	usuarioService.update(usuarioCredito);
-    	this.delete(anuncio.getId());
+    	
+    	System.out.println("55555555555");
+    	this.delete(anuncio.getId());*/
     }
 }
