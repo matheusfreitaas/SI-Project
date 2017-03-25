@@ -1,6 +1,6 @@
 package br.edu.ufcg.computacao.si1.controller;
 
-import br.edu.ufcg.computacao.si1.model.form.UsuarioForm;
+import br.edu.ufcg.computacao.si1.model.usuario.UsuarioForm;
 import br.edu.ufcg.computacao.si1.service.UsuarioServiceImpl;
 import br.edu.ufcg.computacao.si1.util.Constantes;
 

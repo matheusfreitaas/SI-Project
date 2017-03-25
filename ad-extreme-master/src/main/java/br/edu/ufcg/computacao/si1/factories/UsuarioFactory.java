@@ -1,8 +1,8 @@
 package br.edu.ufcg.computacao.si1.factories;
 
 import br.edu.ufcg.computacao.si1.model.usuario.Usuario;
+import br.edu.ufcg.computacao.si1.model.usuario.UsuarioForm;
 import br.edu.ufcg.computacao.si1.util.Constantes;
-import br.edu.ufcg.computacao.si1.model.form.UsuarioForm;
 
 /**
  * Responsável pela instanciação de usuários
