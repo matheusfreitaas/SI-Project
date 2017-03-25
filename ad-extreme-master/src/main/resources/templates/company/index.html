@@ -7,12 +7,16 @@
     <title>.:: ad-extreme ::. - company</title>
 </head>
 <th:block layout:fragment="conteudo">
-    <h1>Bem vindo</h1>
     <div>
-		Seu saldo credor: 0
+		<h1>Bem vindo, <span th:text="${usuario.nome}"></span></h1>
 	</div>
+	<h3></h3>
 	<div>
-		Seu saldo devedor: 0
+		<div>Credito: <span th:text="${usuario.credito}"></span></div>
+	</div>
+	<h3></h3>
+	<div>
+		<div>Debito: <span th:text="${usuario.debito}"></span></div>
 	</div>
 </th:block>
 </html>

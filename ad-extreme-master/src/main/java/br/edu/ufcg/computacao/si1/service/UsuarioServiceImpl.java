@@ -99,4 +99,5 @@ public class UsuarioServiceImpl implements UsuarioService{
     public Usuario getUsuarioPeloEmail(String email){
     	return usuarioRepository.findByEmail(email);
     }
+    
 }

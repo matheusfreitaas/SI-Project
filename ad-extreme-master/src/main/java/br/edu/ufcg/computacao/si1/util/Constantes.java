@@ -14,6 +14,7 @@ public class Constantes {
 	public static final String TIPOS = "tipos";
 	public static final String ANUNCIOS = "anuncios";
 	public static final String MENSAGEM = "mensagem";
+	public static final String USUARIO = "usuario";
 	public static final String CADASTRO_ANUNCIO_SUCESSO = "Anúncio cadastrado com sucesso!";
 	public static final String PESSOA_FISICA = "USER";
 	public static final String PESSOA_JURIDICA = "COMPANY";

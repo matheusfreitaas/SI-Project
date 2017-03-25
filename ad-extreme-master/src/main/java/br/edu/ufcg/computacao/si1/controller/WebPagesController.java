@@ -1,11 +1,14 @@
 package br.edu.ufcg.computacao.si1.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.edu.ufcg.computacao.si1.service.UsuarioServiceImpl;
 import br.edu.ufcg.computacao.si1.util.Constantes;
+import br.edu.ufcg.computacao.si1.util.Util;
 
 /**
  * Responsável pelo fluxo de páginas da aplicação
@@ -15,6 +18,9 @@ import br.edu.ufcg.computacao.si1.util.Constantes;
 @Controller
 public class WebPagesController {
 
+	@Autowired
+	private UsuarioServiceImpl usuarioService;
+	
 	/**
 	 * Redireciona o usuário para a página inicial da aplicação
 	 * @return Página inicial
@@ -46,6 +52,9 @@ public class WebPagesController {
     @RequestMapping(value = Constantes.ROTA_USUARIO_FISICO, method = RequestMethod.GET)
     public ModelAndView getPageIndexUser(){
         ModelAndView model = new ModelAndView();
+        
+        model.addObject(Constantes.USUARIO, usuarioService.getUsuarioPeloEmail(Util.emailUsuarioLogado()));
+        
         model.setViewName(Constantes.VIEW_USUARIO_FISICO);
 
         return model;
@@ -58,6 +67,9 @@ public class WebPagesController {
     @RequestMapping(value = Constantes.ROTA_USUARIO_JURIDICO, method = RequestMethod.GET)
     public ModelAndView getPageIndexCompany(){
         ModelAndView model = new ModelAndView();
+        
+        model.addObject(Constantes.USUARIO, usuarioService.getUsuarioPeloEmail(Util.emailUsuarioLogado()));
+        
         model.setViewName(Constantes.VIEW_USUARIO_JURIDICO);
 
         return model;
