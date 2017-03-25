@@ -2,6 +2,8 @@ package br.edu.ufcg.computacao.si1.controller;
 
 import br.edu.ufcg.computacao.si1.model.form.UsuarioForm;
 import br.edu.ufcg.computacao.si1.service.UsuarioServiceImpl;
+import br.edu.ufcg.computacao.si1.util.Constantes;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,29 +20,29 @@ public class CadastroController {
     @Autowired
     private UsuarioServiceImpl usuarioService;
 
-    @RequestMapping(value = "/cadastrar-se", method = RequestMethod.GET)
+    @RequestMapping(value = Constantes.ROTA_CADASTRAR_USUARIO, method = RequestMethod.GET)
     public ModelAndView getPageCadastro(UsuarioForm usuarioForm){
         
     	ModelAndView model = new ModelAndView();
-        model.setViewName("cadastro");
+        model.setViewName(Constantes.CADASTRO);
 
         return model;
     }
 
-    @RequestMapping(value = "/cadastrar-se", method = RequestMethod.POST)
+    @RequestMapping(value = Constantes.ROTA_CADASTRAR_USUARIO, method = RequestMethod.POST)
     public ModelAndView cadastro(@Valid UsuarioForm usuarioForm, BindingResult result, RedirectAttributes attributes){
         
     	if(result.hasErrors()){
             return getPageCadastro(usuarioForm);
         }
         if (usuarioService.getByEmail(usuarioForm.getEmail()).isPresent()){
-            attributes.addFlashAttribute("error", "Este email já esta em uso!");
+            attributes.addFlashAttribute(Constantes.ERROR, Constantes.EMAIL_EM_USO);
             return new ModelAndView("redirect:/cadastrar-se");
         }
 
         usuarioService.create(usuarioForm);
 
-        attributes.addFlashAttribute("mensagem", "Usuario cadastrado com sucesso!");
+        attributes.addFlashAttribute(Constantes.MENSAGEM, Constantes.CADASTRO_USUARIO_SUCESSO);
         return new ModelAndView("redirect:/cadastrar-se");
     }
 

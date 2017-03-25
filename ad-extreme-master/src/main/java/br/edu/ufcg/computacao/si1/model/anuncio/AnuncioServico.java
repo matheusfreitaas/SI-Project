@@ -5,7 +5,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity(name="AnuncioServico")
+import br.edu.ufcg.computacao.si1.util.Constantes;
+
+@Entity(name=Constantes.ANUNCIOSERVICO)
 @Table(name="tb_anuncio_servico")
 public class AnuncioServico extends Anuncio {
 

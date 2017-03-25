@@ -2,22 +2,23 @@ package br.edu.ufcg.computacao.si1.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import br.edu.ufcg.computacao.si1.util.Constantes;
 
 @Controller
 public class ErrorPagesController {
 
-    @RequestMapping("/404")
+    @RequestMapping(Constantes.ROTA_404)
     public String notFound() {
-        return "error/404";
+        return Constantes.ERRO_404;
     }
 
-    @RequestMapping("/403")
+    @RequestMapping(Constantes.ROTA_403)
     public String forbidden() {
-        return "error/403";
+        return Constantes.ERRO_403;
     }
 
-    @RequestMapping("/500")
+    @RequestMapping(Constantes.ROTA_500)
     public String internalServerError() {
-        return "error/500";
+        return Constantes.ERRO_500;
     }
 }

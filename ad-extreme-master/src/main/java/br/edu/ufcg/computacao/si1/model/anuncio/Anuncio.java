@@ -1,6 +1,9 @@
 package br.edu.ufcg.computacao.si1.model.anuncio;
 
 import javax.persistence.*;
+
+import br.edu.ufcg.computacao.si1.util.Constantes;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,25 +22,25 @@ public abstract class Anuncio {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "_id", nullable = false, unique = true)
+    @Column(name = Constantes.ID, nullable = false, unique = true)
     private Long _id;
 
-    @Column(name = "titulo", nullable = false)
+    @Column(name = Constantes.TITULO, nullable = false)
     private String titulo;
 
-    @Column(name = "data_criacao", nullable = false)
+    @Column(name = Constantes.DATA_CRIACAO, nullable = false)
     private Date dataDeCriacao;
 
-    @Column(name = "preco", nullable = false)
+    @Column(name = Constantes.PRECO, nullable = false)
     private double preco;
 
-    @Column(name = "nota")
+    @Column(name = Constantes.NOTA)
     private String nota;
 
-    @Column(name = "tipo", nullable = false)
+    @Column(name = Constantes.TIPO, nullable = false)
     private String tipo;
     
-    @JoinColumn(name="usuario_email")
+    @JoinColumn(name= Constantes.USUARIO_EMAIL)
     private String emailCriador;
 
     public Anuncio(String titulo, Date dataDeCriacao, double preco, String nota, String tipo) {

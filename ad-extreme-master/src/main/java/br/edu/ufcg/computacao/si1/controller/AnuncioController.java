@@ -1,10 +1,8 @@
 package br.edu.ufcg.computacao.si1.controller;
 
-import br.edu.ufcg.computacao.si1.model.usuario.Usuario;
 import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
 import br.edu.ufcg.computacao.si1.service.AnuncioServiceImpl;
-import br.edu.ufcg.computacao.si1.service.UsuarioServiceImpl;
-import br.edu.ufcg.computacao.si1.util.Util;
+import br.edu.ufcg.computacao.si1.util.Constantes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,47 +20,39 @@ public class AnuncioController {
     @Autowired
     private AnuncioServiceImpl anuncioService;
     
-    @Autowired
-    private UsuarioServiceImpl usuarioService;
-
-    @RequestMapping(value = "/user/cadastrar/anuncio", method = RequestMethod.GET)
+    @RequestMapping(value = Constantes.ROTA_CADASTRAR_ANUNCIO, method = RequestMethod.GET)
     public ModelAndView getPageCadastrarAnuncio(AnuncioForm anuncioForm){
         
     	ModelAndView model = new ModelAndView();
 
-        model.addObject("tipos", anuncioForm.getTipos());
-        model.setViewName("user/cadastrar_anuncio");
+        model.addObject(Constantes.TIPOS, anuncioForm.getTipos());
+        model.setViewName(Constantes.VIEW_CADASTRAR_ANUNCIO);
 
         return model;
     }
 
-    @RequestMapping(value = "/user/listar/anuncios", method = RequestMethod.GET)
+    @RequestMapping(value = Constantes.ROTA_LISTAR_ANUNCIO, method = RequestMethod.GET)
     public ModelAndView getPageListarAnuncios(){
         
     	ModelAndView model = new ModelAndView();
 
-        model.addObject("anuncios", anuncioService.findAll());
+        model.addObject(Constantes.ANUNCIOS, anuncioService.findAll());
 
-        model.setViewName("user/listar_anuncios");
+        model.setViewName(Constantes.VIEW_LISTAR_ANUNCIO);
 
         return model;
     }
 
-    @RequestMapping(value = "/user/cadastrar/anuncio", method = RequestMethod.POST)
+    @RequestMapping(value = Constantes.ROTA_CADASTRAR_ANUNCIO, method = RequestMethod.POST)
     public ModelAndView cadastroAnuncio(@Valid AnuncioForm anuncioForm, BindingResult result, RedirectAttributes attributes){
         
     	if(result.hasErrors()){
             return getPageCadastrarAnuncio(anuncioForm);
         }
-    	
-    	String emailUsuario = Util.emailUsuarioLogado();
-    	Usuario logado = usuarioService.getUsuarioPeloEmail(emailUsuario);
-
-    	System.out.println(logado.getNome());
 
         anuncioService.cria(anuncioForm);
 
-        attributes.addFlashAttribute("mensagem", "Anúncio cadastrado com sucesso!");
+        attributes.addFlashAttribute(Constantes.MENSAGEM, Constantes.CADASTRO_ANUNCIO_SUCESSO);
         return new ModelAndView("redirect:/user/cadastrar/anuncio");
     }
     

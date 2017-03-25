@@ -2,27 +2,28 @@ package br.edu.ufcg.computacao.si1.model.form;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import br.edu.ufcg.computacao.si1.util.Constantes;
+
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class AnuncioForm {
 
-    private final String[] tipos = new String[] {"movel", "imovel", "emprego", "serviço"};
+    private final String[] tipos = Constantes.TIPOS_USUARIO_JURIDICO;
     
-    private final String[] tiposUsuarioFisico = new String[] {"movel", "imovel"};
+    private final String[] tiposUsuarioFisico = Constantes.TIPOS_USUARIO_FISICO;
 
-    @NotNull(message = "O titulo não pode ser nulo.")
-    @NotEmpty(message = "O titulo não pode esta vazio.")
-    @Size(min = 6, max = 100, message = "O titulo deve ter entre 6 e 100 caracters")
+    @NotNull(message = Constantes.TITULO_NULO)
+    @NotEmpty(message = Constantes.TITULO_VAZIO)
+    @Size(min = 6, max = 100, message = Constantes.TITULO_TAMANHO)
     private String titulo;
     
-    @NotNull(message = "O preçço não pode ser nulo.")
-    @DecimalMin(value = "0.1", message = "O preço minimo é 0.1 para um anúncio.")
+    @NotNull(message = Constantes.PRECO_VAZIO)
+    @DecimalMin(value = "0.1", message = Constantes.PRECO_VALOR_INVALIDO)
     private Double preco;
     
-    @NotNull(message = "O tipo de anúncio não pode ser nulo.")
-    @NotEmpty(message = "Escolha um tipo para o anúncio.")
+    @NotEmpty(message = Constantes.TIPO_VAZIO)
     private String tipo;
 
     public String getTitulo() {
