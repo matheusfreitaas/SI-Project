@@ -29,7 +29,7 @@ import br.edu.ufcg.computacao.si1.repository.AnuncioRepository;
 public class AnuncioServiceTest {
 
     @Autowired
-    private AnuncioService anuncioService;
+    private AnuncioServiceImpl anuncioService;
 
     @Autowired
     private AnuncioRepository anuncioRepository;
@@ -52,15 +52,15 @@ public class AnuncioServiceTest {
     @Test
     public void testInicializacao() {
         assertNotNull("AnuncioService não foi instânciado corretamente", anuncioService);
-        assertTrue("AnuncioService não deveria conter nenhum item", anuncioService.findAll().isEmpty());
+        assertTrue("AnuncioService não deveria conter nenhum item", anuncioService.getAll().isEmpty());
     }
 
 
     @Test
     public void testCreateAd() {
-        Anuncio anuncio1FromDB = anuncioService.create(anuncio1);
-        Anuncio anuncio2FromDB = anuncioService.create(anuncio2);
-        Anuncio anuncio3FromDB = anuncioService.create(anuncio3);
+        Anuncio anuncio1FromDB = anuncioService.cria(anuncio1);
+        Anuncio anuncio2FromDB = anuncioService.cria(anuncio2);
+        Anuncio anuncio3FromDB = anuncioService.cria(anuncio3);
 
         assertNotNull(anuncio1FromDB);
         assertNotNull(anuncio2FromDB);
@@ -84,9 +84,9 @@ public class AnuncioServiceTest {
 
         int QTDE_ANUNCIOS_ESPERADA = 1;
 
-        Anuncio anuncioMovel = anuncioService.create(anuncio1);
-        Anuncio anuncioImovel = anuncioService.create(anuncio2);
-        Anuncio anuncioEmprego = anuncioService.create(anuncio3);
+        Anuncio anuncioMovel = anuncioService.cria(anuncio1);
+        Anuncio anuncioImovel = anuncioService.cria(anuncio2);
+        Anuncio anuncioEmprego = anuncioService.cria(anuncio3);
 
         assertNotNull(anuncioMovel);
         assertNotNull(anuncioImovel);

@@ -16,10 +16,9 @@ import java.util.Optional;
  *
  */
 @Service
-public class UsuarioServiceImpl implements UsuarioService{
+public class UsuarioServiceImpl implements InterfaceService<Usuario, UsuarioForm>{
 
     private UsuarioRepository usuarioRepository;
-    
     private UsuarioFactory factory;
 
     @Autowired
@@ -31,8 +30,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     /**
      * Cria um novo usuário
      */
-    @Override
-    public Usuario create(UsuarioForm usuarioForm) {
+    public Usuario cria(UsuarioForm usuarioForm) {
 
         Usuario usuario = factory.criaUsuario(usuarioForm);
 
@@ -49,18 +47,8 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     /**
-     * Retorna um usuário pelo email
-     */
-    @Override
-    public Optional<Usuario> getByEmail(String email) {
-        System.out.println(email + "estah sendo retornado");
-        return Optional.ofNullable(usuarioRepository.findByEmail(email));
-    }
-
-    /**
      * Retorna todos os usuários
      */
-    @Override
     public Collection<Usuario> getAll() {
         return usuarioRepository.findAll();
     }
@@ -68,7 +56,6 @@ public class UsuarioServiceImpl implements UsuarioService{
     /**
      * Atualiza um usuário
      */
-    @Override
     public boolean update(Usuario usuario) {
         System.out.println(usuario + "estah sendo atualizado");
 
@@ -82,7 +69,6 @@ public class UsuarioServiceImpl implements UsuarioService{
     /**
      * Deleta um usuário pelo seu id
      */
-    @Override
     public boolean delete(Long id) {
         if(usuarioRepository.exists(id)) {
             usuarioRepository.delete(id);
@@ -99,5 +85,12 @@ public class UsuarioServiceImpl implements UsuarioService{
     public Usuario getUsuarioPeloEmail(String email){
     	return usuarioRepository.findByEmail(email);
     }
-    
+
+    /**
+     * Retorna um usuário pelo email
+     */
+    public Optional<Usuario> getByEmail(String email) {
+        System.out.println(email + "estah sendo retornado");
+        return Optional.ofNullable(usuarioRepository.findByEmail(email));
+    }
 }
