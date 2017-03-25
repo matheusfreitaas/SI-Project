@@ -29,30 +29,11 @@ public abstract class Anuncio {
     @Column(name = Constantes.PRECO, nullable = false)
     private double preco;
 
-    @Column(name = Constantes.NOTA)
-    private String nota;
-
     @Column(name = Constantes.TIPO, nullable = false)
     private String tipo;
     
     @JoinColumn(name= Constantes.USUARIO_EMAIL)
     private String emailCriador;
-
-    /**
-     * Construtor do objeto
-     * @param titulo Título do anúncio
-     * @param dataDeCriacao Data de criação do anúncio
-     * @param preco Preco do anúncio
-     * @param nota Nota do anúncio
-     * @param tipo Tipo do anúncio
-     */
-    public Anuncio(String titulo, Date dataDeCriacao, double preco, String nota, String tipo) {
-        this.titulo = titulo;
-        this.dataDeCriacao = dataDeCriacao;
-        this.preco = preco;
-        this.nota = nota;
-        this.tipo = tipo;
-    }
     
     /**
      * Construtor do objeto
@@ -65,7 +46,6 @@ public abstract class Anuncio {
         this.titulo = titulo;
         this.dataDeCriacao = new Date();
         this.preco = preco;
-        this.nota = "";
         this.tipo = tipo;
         this.emailCriador = emailUsuario;
     }
@@ -77,7 +57,6 @@ public abstract class Anuncio {
         titulo = "";
         dataDeCriacao = new Date();
         preco = 0;
-        nota = "";
         tipo = "";
     }
 
@@ -146,22 +125,6 @@ public abstract class Anuncio {
     }
 
     /**
-     * Retorna a nota do anúncio
-     * @return Nota do anúncio
-     */
-    public String getNota() {
-        return nota;
-    }
-
-    /**
-     * Modifica a nota do anúncio
-     * @param nota Nova nota do anúncio
-     */
-    public void setNota(String nota) {
-        this.nota = nota;
-    }
-
-    /**
      * Retorna o tipo do anúncio
      * @return Tipo do anúncio
      */
@@ -204,7 +167,6 @@ public abstract class Anuncio {
         if (!getId().equals(anuncio.getId())) return false;
         if (!getTitulo().equals(anuncio.getTitulo())) return false;
         if (!getDataDeCriacao().equals(anuncio.getDataDeCriacao())) return false;
-        if (getNota() != null ? !getNota().equals(anuncio.getNota()) : anuncio.getNota() != null) return false;
         return getTipo().equals(anuncio.getTipo());
 
     }
@@ -218,7 +180,6 @@ public abstract class Anuncio {
         result = 31 * result + getDataDeCriacao().hashCode();
         temp = Double.doubleToLongBits(getPreco());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (getNota() != null ? getNota().hashCode() : 0);
         result = 31 * result + getTipo().hashCode();
         return result;
     }
@@ -230,7 +191,6 @@ public abstract class Anuncio {
                 ", titulo='" + titulo + '\'' +
                 ", dataDeCriacao=" + getDataDeCriacao() +
                 ", preco=" + preco +
-                ", nota=" + nota +
                 ", tipo='" + tipo + '\'' + "Dono: "+emailCriador+
                 '}';
     }

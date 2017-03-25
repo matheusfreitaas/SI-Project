@@ -19,7 +19,6 @@ import br.edu.ufcg.computacao.si1.model.anuncio.Anuncio;
 import br.edu.ufcg.computacao.si1.model.anuncio.AnuncioEmprego;
 import br.edu.ufcg.computacao.si1.model.anuncio.AnuncioImovel;
 import br.edu.ufcg.computacao.si1.model.anuncio.AnuncioMovel;
-import br.edu.ufcg.computacao.si1.model.Notas;
 import br.edu.ufcg.computacao.si1.repository.AnuncioRepository;
 
 /**
@@ -40,9 +39,9 @@ public class AnuncioServiceTest {
 
     @Before
     public void setUp() {
-        anuncio1 = new AnuncioMovel("Anuncio de Movel", new Date(), 100, Notas.notas[2], "movel");
-        anuncio2 = new AnuncioImovel("Anuncio de Imovel", new Date(), 100000, Notas.notas[3], "imovel");
-        anuncio3 = new AnuncioEmprego("Anuncio de Emprego", new Date(), 0, Notas.notas[1], "emprego");
+        anuncio1 = new AnuncioMovel("Anuncio de Movel", 100, "movel","user@email.com");
+        anuncio2 = new AnuncioImovel("Anuncio de Imovel", 100000, "imovel","user@email.com");
+        anuncio3 = new AnuncioEmprego("Anuncio de Emprego", 0, "emprego","user@email.com");
     }
 
     @After
@@ -206,18 +205,9 @@ public class AnuncioServiceTest {
         assertEquals(anuncioImovel.getPreco(), anuncioService.getById(anuncioImovel.getId()).get().getPreco());
         assertEquals(anuncioEmprego.getPreco(), anuncioService.getById(anuncioEmprego.getId()).get().getPreco());
 
-        //Update nota
-        anuncioMovel.setNota(Notas.notas[4]);
-        anuncioImovel.setNota(Notas.notas[4]);
-        anuncioEmprego.setNota(Notas.notas[4]);
-
         assertTrue(anuncioService.update(anuncioMovel));
         assertTrue(anuncioService.update(anuncioImovel));
         assertTrue(anuncioService.update(anuncioEmprego));
-
-        assertEquals(Notas.notas[4], anuncioService.getById(anuncioMovel.getId()).get().getNota());
-        assertEquals(Notas.notas[4], anuncioService.getById(anuncioImovel.getId()).get().getNota());
-        assertEquals(Notas.notas[4], anuncioService.getById(anuncioEmprego.getId()).get().getNota());
     }
 
 }
