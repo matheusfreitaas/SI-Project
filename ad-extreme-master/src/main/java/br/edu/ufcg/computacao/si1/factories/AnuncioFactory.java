@@ -9,8 +9,18 @@ import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
 import br.edu.ufcg.computacao.si1.util.Constantes;
 import br.edu.ufcg.computacao.si1.util.Util;
 
+/**
+ * Responsável pela instanciação de anúncios
+ * @author Rafael
+ *
+ */
 public class AnuncioFactory {
 	
+	/**
+	 * Cria um anúncio, dependendo do tipo passado
+	 * @param anuncioForm Formulário de um anúncio
+	 * @return Anúncio criado
+	 */
 	public Anuncio criaAnuncio(AnuncioForm anuncioForm){
 		
 		Anuncio novoAnuncio;

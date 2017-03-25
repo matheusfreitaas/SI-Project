@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.Optional;
 
+/**
+ * Responsável pela conexão do UsuarioController com o UsuarioRepository
+ * @author Rafael
+ *
+ */
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
 
@@ -23,6 +28,9 @@ public class UsuarioServiceImpl implements UsuarioService{
         this.factory = new UsuarioFactory();
     }
 
+    /**
+     * Cria um novo usuário
+     */
     @Override
     public Usuario create(UsuarioForm usuarioForm) {
 
@@ -32,22 +40,34 @@ public class UsuarioServiceImpl implements UsuarioService{
         return usuarioRepository.save(usuario);
     }
 
+    /**
+     * Retorna um usuário pelo id
+     */
     @Override
     public Optional<Usuario> getById(Long id) {
         return Optional.ofNullable(usuarioRepository.findOne(id));
     }
 
+    /**
+     * Retorna um usuário pelo email
+     */
     @Override
     public Optional<Usuario> getByEmail(String email) {
         System.out.println(email + "estah sendo retornado");
         return Optional.ofNullable(usuarioRepository.findByEmail(email));
     }
 
+    /**
+     * Retorna todos os usuários
+     */
     @Override
     public Collection<Usuario> getAll() {
         return usuarioRepository.findAll();
     }
 
+    /**
+     * Atualiza um usuário
+     */
     @Override
     public boolean update(Usuario usuario) {
         System.out.println(usuario + "estah sendo atualizado");
@@ -59,6 +79,9 @@ public class UsuarioServiceImpl implements UsuarioService{
         return false;
     }
 
+    /**
+     * Deleta um usuário pelo seu id
+     */
     @Override
     public boolean delete(Long id) {
         if(usuarioRepository.exists(id)) {
@@ -68,6 +91,11 @@ public class UsuarioServiceImpl implements UsuarioService{
         return false;
     }
     
+    /**
+     * Retorna um usuário pelo email
+     * @param email Email do usuário
+     * @return Usuário
+     */
     public Usuario getUsuarioPeloEmail(String email){
     	return usuarioRepository.findByEmail(email);
     }

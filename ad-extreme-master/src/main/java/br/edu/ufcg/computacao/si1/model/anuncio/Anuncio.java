@@ -4,21 +4,16 @@ import javax.persistence.*;
 
 import br.edu.ufcg.computacao.si1.util.Constantes;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Marcus Oliveira on 08/12/16.
+ * Classe abstrata para o objeto Anuncio
+ * @author Rafael
+ *
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Anuncio {
-
-    //private static final String[] tipos = new String[] {"movel", "imovel", "emprego", "serviço"};
-
-
-    private final static DateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -43,6 +38,14 @@ public abstract class Anuncio {
     @JoinColumn(name= Constantes.USUARIO_EMAIL)
     private String emailCriador;
 
+    /**
+     * Construtor do objeto
+     * @param titulo Título do anúncio
+     * @param dataDeCriacao Data de criação do anúncio
+     * @param preco Preco do anúncio
+     * @param nota Nota do anúncio
+     * @param tipo Tipo do anúncio
+     */
     public Anuncio(String titulo, Date dataDeCriacao, double preco, String nota, String tipo) {
         this.titulo = titulo;
         this.dataDeCriacao = dataDeCriacao;
@@ -51,6 +54,13 @@ public abstract class Anuncio {
         this.tipo = tipo;
     }
     
+    /**
+     * Construtor do objeto
+     * @param titulo Título do anúncio
+     * @param preco Preco do anúncio
+     * @param tipo Tipo do anúncio
+     * @param emailUsuario Email do criador do anúncio
+     */
     public Anuncio(String titulo, double preco, String tipo, String emailUsuario) {
         this.titulo = titulo;
         this.dataDeCriacao = new Date();
@@ -60,6 +70,9 @@ public abstract class Anuncio {
         this.emailCriador = emailUsuario;
     }
 
+    /**
+     * Construtor default
+     */
     public Anuncio() {
         titulo = "";
         dataDeCriacao = new Date();
@@ -70,7 +83,7 @@ public abstract class Anuncio {
 
     /**
      * Retorna o id do anuncio
-     * @return o id do anuncio
+     * @return Id do anuncio
      */
     public Long getId() {
         return _id;
@@ -84,50 +97,98 @@ public abstract class Anuncio {
         this._id = _id;
     }
 
+    /**
+     * Retorna o título do anúncio
+     * @return Titulo do anúncio
+     */
     public String getTitulo() {
         return titulo;
     }
 
+    /**
+     * Modifica o título do anúncio
+     * @param titulo Novo titulo do anúncio
+     */
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
+    /**
+     * Retorna a data de criação do anúncio
+     * @return Data de criação do anúncio
+     */
     public String getDataDeCriacao() {
-        return DATE_FORMAT.format(dataDeCriacao);
+        return Constantes.DATE_FORMAT.format(dataDeCriacao);
     }
 
+    /**
+     * Modifica a data de criação do anúncio
+     * @param dataDeCriacao Nova data de criação do anúncio
+     */
     public void setDataDeCriacao(Date dataDeCriacao) {
         this.dataDeCriacao = dataDeCriacao;
     }
 
+    /**
+     * Retorna o preco do anúncio
+     * @return Preco do anúncio
+     */
     public double getPreco() {
         return preco;
     }
 
+    /**
+     * Modifica o preco do anúncio
+     * @param preco Novo preco do anúncio
+     */
     public void setPreco(double preco) {
         this.preco = preco;
     }
 
+    /**
+     * Retorna a nota do anúncio
+     * @return Nota do anúncio
+     */
     public String getNota() {
         return nota;
     }
 
+    /**
+     * Modifica a nota do anúncio
+     * @param nota Nova nota do anúncio
+     */
     public void setNota(String nota) {
         this.nota = nota;
     }
 
+    /**
+     * Retorna o tipo do anúncio
+     * @return Tipo do anúncio
+     */
     public String getTipo() {
         return tipo;
     }
 
+    /**
+     * Modifica o tipo do anúncio
+     * @param tipo Novo tipo do anúncio
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
+    /**
+     * Retorna o email do criador do anúncio
+     * @return Email do criador do anúncio
+     */
     public String getEmailCriador() {
 		return emailCriador;
 	}
 
+    /**
+     * Modifica o email do criador do anúncio
+     * @param email Novo email do criador do anúncio
+     */
 	public void setEmailCriador(String email) {
 		this.emailCriador = email;
 	}

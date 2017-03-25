@@ -4,8 +4,18 @@ import br.edu.ufcg.computacao.si1.model.usuario.Usuario;
 import br.edu.ufcg.computacao.si1.util.Constantes;
 import br.edu.ufcg.computacao.si1.model.form.UsuarioForm;
 
+/**
+ * Responsável pela instanciação de usuários
+ * @author Rafael
+ *
+ */
 public class UsuarioFactory {
 	
+	/**
+	 * Cria um usuário, dependendo do tipo passado
+	 * @param usuarioForm Formulário de um usuário
+	 * @return Novo uúario
+	 */
 	public Usuario criaUsuario(UsuarioForm usuarioForm){
 		
 		Usuario novoUsuario;

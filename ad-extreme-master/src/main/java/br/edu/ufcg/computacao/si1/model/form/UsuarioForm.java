@@ -8,6 +8,11 @@ import br.edu.ufcg.computacao.si1.util.Constantes;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Formulário para a criação de um usuário
+ * @author Rafael
+ *
+ */
 public class UsuarioForm {
 	
     @NotNull(message = Constantes.NOME_NULO)

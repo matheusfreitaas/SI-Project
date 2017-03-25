@@ -1,5 +1,6 @@
 package br.edu.ufcg.computacao.si1.controller;
 
+import br.edu.ufcg.computacao.si1.model.anuncio.Anuncio;
 import br.edu.ufcg.computacao.si1.model.form.AnuncioForm;
 import br.edu.ufcg.computacao.si1.service.AnuncioServiceImpl;
 import br.edu.ufcg.computacao.si1.util.Constantes;
@@ -14,12 +15,22 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+/**
+ * Responsável por gerenciar as operações sobre os anúncios de uma Pessoa Física
+ * @author Rafael
+ *
+ */
 @Controller
 public class AnuncioController {
 
     @Autowired
     private AnuncioServiceImpl anuncioService;
     
+    /**
+     * Redireciona o usúario para a view de cadastro de anúncios
+     * @param anuncioForm Formulário de um anúncio
+     * @return Página de cadastrar anúncios
+     */
     @RequestMapping(value = Constantes.ROTA_CADASTRAR_ANUNCIO, method = RequestMethod.GET)
     public ModelAndView getPageCadastrarAnuncio(AnuncioForm anuncioForm){
         
@@ -31,6 +42,10 @@ public class AnuncioController {
         return model;
     }
 
+    /**
+     * Retorna a view com todos os anúncios cadastrados
+     * @return Página com todos os anúncios
+     */
     @RequestMapping(value = Constantes.ROTA_LISTAR_ANUNCIO, method = RequestMethod.GET)
     public ModelAndView getPageListarAnuncios(){
         
@@ -43,6 +58,13 @@ public class AnuncioController {
         return model;
     }
 
+    /**
+     * Cadastra um anúncio e redireciona o usuário para a pagina de todos os anúncios
+     * @param anuncioForm Formulário de um anúncio
+     * @param result
+     * @param attributes
+     * @return Página com a listagem de todos os anúncios
+     */
     @RequestMapping(value = Constantes.ROTA_CADASTRAR_ANUNCIO, method = RequestMethod.POST)
     public ModelAndView cadastroAnuncio(@Valid AnuncioForm anuncioForm, BindingResult result, RedirectAttributes attributes){
         
@@ -53,10 +75,31 @@ public class AnuncioController {
         anuncioService.cria(anuncioForm);
 
         attributes.addFlashAttribute(Constantes.MENSAGEM, Constantes.CADASTRO_ANUNCIO_SUCESSO);
-        return new ModelAndView("redirect:/user/cadastrar/anuncio");
+        return new ModelAndView("redirect:/user/listar/anuncios");
     }
     
-    
+    /**
+     * Realiza a compra de um determinado anúncio
+     * @param anuncio Anuncio a ser compado
+     * @param result
+     * @param attributes
+     * @return Página com a listagem de todos os anúncios
+     */
+    @RequestMapping(value = Constantes.ROTA_COMPRAR_ANUNCIO, method = RequestMethod.POST)
+    public ModelAndView comprarAnuncio(@Valid Anuncio anuncio, BindingResult result, RedirectAttributes attributes){
+
+    	System.out.println("entrou");
+
+    	if(result.hasErrors()){
+           // return getPageCadastrarAnuncio(anuncioForm);
+    		return new ModelAndView();
+        }
+    	
+        //anuncioService.comprar(anuncio);
+
+        attributes.addFlashAttribute(Constantes.MENSAGEM, Constantes.CADASTRO_ANUNCIO_SUCESSO);
+        return new ModelAndView("redirect:/user/listar/anuncios");
+    }
 
 
 }

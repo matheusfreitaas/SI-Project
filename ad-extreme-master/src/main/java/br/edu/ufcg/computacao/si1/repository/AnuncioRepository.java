@@ -4,7 +4,9 @@ import br.edu.ufcg.computacao.si1.model.anuncio.Anuncio;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Created by Marcus Oliveira on 28/12/16.
+ * Repositório para anúncios
+ * @author Rafael
+ *
  */
 public interface AnuncioRepository extends JpaRepository<Anuncio, Long> {
 

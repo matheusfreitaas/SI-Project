@@ -1,5 +1,13 @@
 package br.edu.ufcg.computacao.si1.util;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+/**
+ * Listagem de todas as constantes usadas em todo o Back End
+ * @author Rafael
+ *
+ */
 public class Constantes {
 
 	//Geral
@@ -10,6 +18,7 @@ public class Constantes {
 	public static final String PESSOA_FISICA = "USER";
 	public static final String PESSOA_JURIDICA = "COMPANY";
 	public static final String ERROR = "error";
+	public final static DateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
 	
 	//AnuncioForm
 	public static final String[] TIPOS_USUARIO_FISICO = new String[] {"movel", "imovel"};
@@ -17,7 +26,7 @@ public class Constantes {
 	public static final String TITULO_NULO = "O titulo não pode ser nulo.";
 	public static final String TITULO_VAZIO = "O titulo não pode esta vazio.";
 	public static final String TITULO_TAMANHO = "O titulo deve ter entre 6 e 100 caracters";
-	public static final String PRECO_VAZIO = "O preço não pode ser nulo.";
+	public static final String PRECO_VAZIO = "O preco não pode ser nulo.";
 	public static final String PRECO_VALOR_INVALIDO = "O preço minimo é 0.1 para um anúncio.";
 	public static final String TIPO_VAZIO = "Escolha um tipo para o anúncio.";
 	
@@ -51,12 +60,14 @@ public class Constantes {
 	public static final String VIEW_CADASTRAR_ANUNCIO = "user/cadastrar_anuncio";
 	public static final String ROTA_LISTAR_ANUNCIO = "/user/listar/anuncios";
 	public static final String VIEW_LISTAR_ANUNCIO = "user/listar_anuncios";
+	public static final String ROTA_COMPRAR_ANUNCIO = "/user/comprar/anuncio";
 	
 	//CompanyAnuncioController
 	public static final String ROTA_CADASTRAR_ANUNCIO_COMPANY = "/company/cadastrar/anuncio";
 	public static final String VIEW_CADASTRAR_ANUNCIO_COMPANY = "company/cadastrar_anuncio";
 	public static final String ROTA_LISTAR_ANUNCIO_COMPANY = "/company/listar/anuncios";
 	public static final String VIEW_LISTAR_ANUNCIO_COMPANY = "company/listar_anuncios";
+	public static final String ROTA_COMPRAR_ANUNCIO_COMPANY = "/company/comprar/anuncio";
 	
 	//ErrorPagesController
 	public static final String ROTA_404 = "/404";

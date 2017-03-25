@@ -8,6 +8,11 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Formulário para a criação de um anúncio
+ * @author Rafael
+ *
+ */
 public class AnuncioForm {
 
     private final String[] tipos = Constantes.TIPOS_USUARIO_JURIDICO;

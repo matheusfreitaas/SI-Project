@@ -14,12 +14,22 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+/**
+ * Responsável por gerenciar o cadastro de usuários
+ * @author Rafael
+ *
+ */
 @Controller
 public class CadastroController {
 
     @Autowired
     private UsuarioServiceImpl usuarioService;
-
+    
+    /**
+     * Redireciona o usuário para a view de cadastro de usuários
+     * @param usuarioForm Formulário de um usúario
+     * @return Página de cadastro de usuários
+     */
     @RequestMapping(value = Constantes.ROTA_CADASTRAR_USUARIO, method = RequestMethod.GET)
     public ModelAndView getPageCadastro(UsuarioForm usuarioForm){
         
@@ -29,6 +39,13 @@ public class CadastroController {
         return model;
     }
 
+    /**
+     * Cadastra um usuário, caso o email não esteja em uso
+     * @param usuarioForm Formulário de um usúario
+     * @param result
+     * @param attributes
+     * @return
+     */
     @RequestMapping(value = Constantes.ROTA_CADASTRAR_USUARIO, method = RequestMethod.POST)
     public ModelAndView cadastro(@Valid UsuarioForm usuarioForm, BindingResult result, RedirectAttributes attributes){
         
