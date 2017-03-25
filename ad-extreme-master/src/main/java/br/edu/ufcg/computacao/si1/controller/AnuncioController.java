@@ -51,7 +51,7 @@ public class AnuncioController {
         
     	ModelAndView model = new ModelAndView();
 
-        model.addObject(Constantes.ANUNCIOS, anuncioService.findAll());
+        model.addObject(Constantes.ANUNCIOS, anuncioService.getAll());
 
         model.setViewName(Constantes.VIEW_LISTAR_ANUNCIO);
 

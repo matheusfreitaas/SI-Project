@@ -57,7 +57,7 @@ public class CadastroController {
             return new ModelAndView("redirect:/cadastrar-se");
         }
 
-        usuarioService.create(usuarioForm);
+        usuarioService.cria(usuarioForm);
 
         attributes.addFlashAttribute(Constantes.MENSAGEM, Constantes.CADASTRO_USUARIO_SUCESSO);
         return new ModelAndView("redirect:/cadastrar-se");
