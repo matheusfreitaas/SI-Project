@@ -34,7 +34,6 @@ public class UsuarioServiceImpl implements InterfaceService<Usuario, UsuarioForm
 
         Usuario usuario = factory.criaUsuario(usuarioForm);
 
-        System.out.println(usuario + "estah sendo criado");
         return usuarioRepository.save(usuario);
     }
 
@@ -57,7 +56,6 @@ public class UsuarioServiceImpl implements InterfaceService<Usuario, UsuarioForm
      * Atualiza um usuário
      */
     public boolean update(Usuario usuario) {
-        System.out.println(usuario + "estah sendo atualizado");
 
         if(usuarioRepository.exists(usuario.getId())) {
             usuarioRepository.save(usuario);

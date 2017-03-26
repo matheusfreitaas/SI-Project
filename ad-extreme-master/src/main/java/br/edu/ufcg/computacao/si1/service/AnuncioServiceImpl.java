@@ -48,7 +48,6 @@ public class AnuncioServiceImpl implements InterfaceService<Anuncio, AnuncioForm
     	
     	Anuncio anuncio = factory.criaAnuncio(anuncioForm);
     	
-    	System.out.println(anuncio);
         return anuncioRepository.save(anuncio);
     }
    
