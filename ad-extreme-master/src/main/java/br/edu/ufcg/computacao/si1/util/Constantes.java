@@ -55,6 +55,7 @@ public class Constantes {
 	public static final String CADASTRO = "cadastro";
 	public static final String CADASTRO_USUARIO_SUCESSO = "Usuario cadastrado com sucesso!";
 	public static final String EMAIL_EM_USO = "Este email já esta em uso!";
+	public static final String REDIRECIONAR_CADASTRO = "redirect:/cadastrar-se";
 	
 	//AnuncioController
 	public static final String ROTA_CADASTRAR_ANUNCIO = "/user/cadastrar/anuncio";
@@ -62,6 +63,8 @@ public class Constantes {
 	public static final String ROTA_LISTAR_ANUNCIO = "/user/listar/anuncios";
 	public static final String VIEW_LISTAR_ANUNCIO = "user/listar_anuncios";
 	public static final String ROTA_COMPRAR_ANUNCIO = "/user/comprar/anuncio";
+	public static final String REDIRECIONAR_LISTA_ANUNCIO = "redirect:/user/listar/anuncios";
+	public static final String REDIRECIONAR_CADASTRO_ANUNCIO = "redirect:/user/cadastrar/anuncio";
 	
 	//CompanyAnuncioController
 	public static final String ROTA_CADASTRAR_ANUNCIO_COMPANY = "/company/cadastrar/anuncio";
@@ -69,6 +72,8 @@ public class Constantes {
 	public static final String ROTA_LISTAR_ANUNCIO_COMPANY = "/company/listar/anuncios";
 	public static final String VIEW_LISTAR_ANUNCIO_COMPANY = "company/listar_anuncios";
 	public static final String ROTA_COMPRAR_ANUNCIO_COMPANY = "/company/comprar/anuncio";
+	public static final String REDIRECIONAR_LISTA_ANUNCIO_COMPANY = "redirect:/company/listar/anuncios";
+	public static final String REDIRECIONAR_CADASTRO_ANUNCIO_COMPANY = "redirect:/company/cadastrar/anuncio";
 	
 	//ErrorPagesController
 	public static final String ROTA_404 = "/404";

@@ -75,7 +75,7 @@ public class AnuncioController {
         anuncioService.cria(anuncioForm);
 
         attributes.addFlashAttribute(Constantes.MENSAGEM, Constantes.CADASTRO_ANUNCIO_SUCESSO);
-        return new ModelAndView("redirect:/user/listar/anuncios");
+        return new ModelAndView(Constantes.REDIRECIONAR_LISTA_ANUNCIO);
     }
     
     /**
@@ -89,12 +89,12 @@ public class AnuncioController {
     public ModelAndView comprarAnuncio(@RequestBody String titulo, BindingResult result){
 
     	if(result.hasErrors()){
-    		return new ModelAndView("redirect:/user/cadastrar/anuncio");
+    		return new ModelAndView(Constantes.REDIRECIONAR_CADASTRO_ANUNCIO);
         }
     	
         anuncioService.comprarAnuncio(titulo);
 
-        return new ModelAndView("redirect:/user/listar/anuncios");
+        return new ModelAndView(Constantes.REDIRECIONAR_LISTA_ANUNCIO);
     }
 
 

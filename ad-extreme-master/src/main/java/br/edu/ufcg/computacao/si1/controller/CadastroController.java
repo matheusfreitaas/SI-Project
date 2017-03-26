@@ -54,13 +54,13 @@ public class CadastroController {
         }
         if (usuarioService.getByEmail(usuarioForm.getEmail()).isPresent()){
             attributes.addFlashAttribute(Constantes.ERROR, Constantes.EMAIL_EM_USO);
-            return new ModelAndView("redirect:/cadastrar-se");
+            return new ModelAndView(Constantes.REDIRECIONAR_CADASTRO);
         }
 
         usuarioService.cria(usuarioForm);
 
         attributes.addFlashAttribute(Constantes.MENSAGEM, Constantes.CADASTRO_USUARIO_SUCESSO);
-        return new ModelAndView("redirect:/cadastrar-se");
+        return new ModelAndView(Constantes.REDIRECIONAR_CADASTRO);
     }
 
 
