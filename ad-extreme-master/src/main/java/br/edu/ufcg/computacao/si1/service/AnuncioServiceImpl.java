@@ -19,7 +19,6 @@ import java.util.Optional;
  */
 @Service
 public class AnuncioServiceImpl implements InterfaceService<Anuncio, AnuncioForm> {
-    //TODO add validity checks
 
     private AnuncioRepository anuncioRepository;
     private AnuncioFactory factory;
@@ -30,7 +29,6 @@ public class AnuncioServiceImpl implements InterfaceService<Anuncio, AnuncioForm
 
     @Autowired
     public AnuncioServiceImpl(AnuncioRepository anuncioRepository) {
-        /*neste codigo apenas atribuimos o repositorio jpa ao atributo */
         this.anuncioRepository = anuncioRepository;
         this.factory = new AnuncioFactory();
     }
@@ -47,7 +45,6 @@ public class AnuncioServiceImpl implements InterfaceService<Anuncio, AnuncioForm
      * Cria um anuncio pelo seu formulário
      */
     public Anuncio cria(AnuncioForm anuncioForm) {
-        /*aqui salvamos o anuncio recem criado no repositorio jpa*/
     	
     	Anuncio anuncio = factory.criaAnuncio(anuncioForm);
     	
@@ -73,7 +70,6 @@ public class AnuncioServiceImpl implements InterfaceService<Anuncio, AnuncioForm
      * Atualiza um anúncio
      */
     public boolean update(Anuncio anuncio) {
-        /*a atualizacao do anuncio eh feita apenas se o anuncio ja existir*/
         if (anuncioRepository.exists(anuncio.getId())) {
             anuncioRepository.save(anuncio);
             return true;
@@ -85,7 +81,6 @@ public class AnuncioServiceImpl implements InterfaceService<Anuncio, AnuncioForm
      * Deleta um anúncio pelo seu id
      */
     public boolean delete(Long id) {
-        /*aqui se apaga o anuncio se ele existir*/
         if (anuncioRepository.exists(id)) {
             anuncioRepository.delete(id);
             return true;
@@ -98,27 +93,22 @@ public class AnuncioServiceImpl implements InterfaceService<Anuncio, AnuncioForm
      * @param anuncio Anúncio a ser comprado
      */
     public void comprarAnuncio(String titulo){
-    	System.out.println("1111111111");
-    	System.out.println(titulo);
-    	//Anuncio anuncio = anuncioRepository.findByTitulo(titulo);
+    	Anuncio anuncio = anuncioRepository.findByTitulo(titulo);
     	
-    	System.out.println("222222222");
     	
     	Usuario usuarioDebito = usuarioService.getUsuarioPeloEmail(Util.emailUsuarioLogado());
-    	//Usuario usuarioCredito = usuarioService.getUsuarioPeloEmail(anuncio.getEmailCriador());
+    	Usuario usuarioCredito = usuarioService.getUsuarioPeloEmail(anuncio.getEmailCriador());
     	
-    	/*
+    	
     	double valor = anuncio.getPreco();
     	
     	usuarioDebito.setDebito(usuarioDebito.getDebito() + valor);
     	usuarioCredito.setCredito(usuarioCredito.getCredito() + valor);
     	
-    	System.out.println("444444444444");
     	
     	usuarioService.update(usuarioDebito);
     	usuarioService.update(usuarioCredito);
     	
-    	System.out.println("55555555555");
-    	this.delete(anuncio.getId());*/
+    	this.delete(anuncio.getId());
     }
 }

@@ -37,7 +37,7 @@ public class AnuncioFactory {
 			novoAnuncio = new AnuncioEmprego(anuncioForm.getTitulo(), anuncioForm.getPreco(),
 					anuncioForm.getTipo(), Util.emailUsuarioLogado());
 			
-		}else if(anuncioForm.getTipo().equals(Constantes.ANUNCIO_SERVICO)){//Anuncio de serviço
+		}else if(anuncioForm.getTipo().equals(Constantes.ANUNCIO_SERVICO)){
 			novoAnuncio = new AnuncioServico(anuncioForm.getTitulo(), anuncioForm.getPreco(),
 					anuncioForm.getTipo(), Util.emailUsuarioLogado());
 		}else{

@@ -27,6 +27,7 @@ public class WebPagesController {
 	 */
     @RequestMapping(value = Constantes.ROTA_INICIAL, method = RequestMethod.GET)
     public ModelAndView getPageIndex(){
+    	
         ModelAndView model = new ModelAndView();
         model.setViewName(Constantes.VIEW_INDEX);
 
@@ -39,6 +40,7 @@ public class WebPagesController {
      */
     @RequestMapping(value = Constantes.ROTA_LOGIN, method = RequestMethod.GET)
     public ModelAndView getPageLogin(){
+    	
         ModelAndView model = new ModelAndView();
         model.setViewName(Constantes.VIEW_LOGIN);
 
@@ -51,6 +53,7 @@ public class WebPagesController {
      */
     @RequestMapping(value = Constantes.ROTA_USUARIO_FISICO, method = RequestMethod.GET)
     public ModelAndView getPageIndexUser(){
+    	
         ModelAndView model = new ModelAndView();
         
         model.addObject(Constantes.USUARIO, usuarioService.getUsuarioPeloEmail(Util.emailUsuarioLogado()));
@@ -66,6 +69,7 @@ public class WebPagesController {
      */
     @RequestMapping(value = Constantes.ROTA_USUARIO_JURIDICO, method = RequestMethod.GET)
     public ModelAndView getPageIndexCompany(){
+    	
         ModelAndView model = new ModelAndView();
         
         model.addObject(Constantes.USUARIO, usuarioService.getUsuarioPeloEmail(Util.emailUsuarioLogado()));

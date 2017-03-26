@@ -30,7 +30,7 @@
                         <td th:text="${item.dataDeCriacao}"> - </td>
                         <td align="center" th:text="${'R$ ' + #numbers.formatDecimal(item.preco, 0, 'COMMA', 2, 'POINT')}">0.00</td>
                         <td>
-	                        <form method="post" role="form" th:object="${item}" th:action="@{/company/comprar/anuncio}">
+	                        <form method="post" role="form" th:object="${item.titulo}" th:action="@{/company/comprar/anuncio}">
 	                        	<button>Comprar</button>
 	                        </form>
                         </td>

@@ -101,4 +101,11 @@ public class Constantes {
 	public static final String ANUNCIOMOVEL = "AnuncioMovel";
 	public static final String ANUNCIOSERVICO = "AnuncioServico";
 	
+	//CustomAuthenticationSuccessHandler
+	public static final String ERRO_AO_REDIRECIONAR = "Não foi possível redirecionar para";
+	
+	//SecurityConfiguration
+	public static final String ERRO_LOCALIZAR_USUARIO = "Não foi possível localizar o usuário";
+	
+	
 }

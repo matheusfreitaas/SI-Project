@@ -9,6 +9,8 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import br.edu.ufcg.computacao.si1.util.Constantes;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -38,7 +40,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         String targetUrl = determineTargetUrl(authentication);
 
         if (response.isCommitted()) {
-            logger.debug("Não foi possível redirecionar para" + targetUrl);
+            logger.debug(Constantes.ERRO_AO_REDIRECIONAR + targetUrl);
             return;
         }
 
@@ -51,18 +53,18 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
         for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("USER")) {
+            if (grantedAuthority.getAuthority().equals(Constantes.PESSOA_FISICA)) {
                 isUser = true;
                 break;
-            } else if (grantedAuthority.getAuthority().equals("COMPANY")) {
+            } else if (grantedAuthority.getAuthority().equals(Constantes.PESSOA_JURIDICA)) {
                 isAdmin = true;
             }
         }
 
         if (isUser) {
-            return "/user";
+            return Constantes.ROTA_USUARIO_FISICO;
         } else if (isAdmin) {
-            return "/company";
+            return Constantes.ROTA_USUARIO_JURIDICO;
         } else {
             throw new IllegalStateException();
         }

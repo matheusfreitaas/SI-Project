@@ -85,10 +85,8 @@ public class AnuncioController {
      * @param attributes
      * @return Página com a listagem de todos os anúncios
      */
-    @RequestMapping(value = Constantes.ROTA_COMPRAR_ANUNCIO, method = RequestMethod.POST)
-    public ModelAndView comprarAnuncio(@RequestBody String titulo, BindingResult result, RedirectAttributes attributes){
-
-    	System.out.println(titulo);
+    @RequestMapping(value = Constantes.ROTA_COMPRAR_ANUNCIO_COMPANY, method = RequestMethod.POST)
+    public ModelAndView comprarAnuncio(@RequestBody String titulo, BindingResult result){
 
     	if(result.hasErrors()){
     		return new ModelAndView("redirect:/user/cadastrar/anuncio");

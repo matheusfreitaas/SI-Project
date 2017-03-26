@@ -2,6 +2,7 @@ package br.edu.ufcg.computacao.si1.config;
 
 import br.edu.ufcg.computacao.si1.model.usuario.Usuario;
 import br.edu.ufcg.computacao.si1.service.UsuarioServiceImpl;
+import br.edu.ufcg.computacao.si1.util.Constantes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -33,8 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         http
             .authorizeRequests()
                     .antMatchers("/","/cadastrar-se").permitAll()
-                    .antMatchers("/user/**").hasAuthority("USER")
-                    .antMatchers("/company/**").hasAuthority("COMPANY")
+                    .antMatchers("/user/**").hasAuthority(Constantes.PESSOA_FISICA)
+                    .antMatchers("/company/**").hasAuthority(Constantes.PESSOA_JURIDICA)
                     .anyRequest().fullyAuthenticated()
                 .and()
             .formLogin()
@@ -51,17 +52,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     }
 
     /**
-     * TODO colocar para o login ser feito por dados consultados no banco de dados
+     * colocar para o login ser feito por dados consultados no banco de dados
      * @param auth
      * @throws Exception
      */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//            .inMemoryAuthentication()
-//                .withUser("user").password("password").roles("USER")
-//                .and()
-//                .withUser("company").password("password").roles("COMPANY");
 
 
         auth.jdbcAuthentication().dataSource(dataSource)
@@ -70,14 +66,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .authoritiesByUsernameQuery(
                         "select email as username, role from tb_usuario where email=?");
     }
-
-//    @Autowired
-//    public final void configAuthentication(final AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//            .userDetailsService(userDetailsService())
-//            .passwordEncoder(new BasicEncoder());
-//    }
-//
+    
     @Bean
     protected UserDetailsService userDetailsService(){
         return new UserDetailsService() {
@@ -91,7 +80,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                     return new User(usuario.getEmail(), usuario.getSenha(), true, true, true, true,
                             AuthorityUtils.createAuthorityList(usuario.getRole()));
                 }else {
-                    throw new UsernameNotFoundException("Não foi possível localizar o usuário" + usuario);
+                    throw new UsernameNotFoundException(Constantes.ERRO_LOCALIZAR_USUARIO + usuario);
                 }
             }
         };
