@@ -46,9 +46,7 @@ public class AnuncioServiceImpl implements InterfaceService<Anuncio, AnuncioForm
      */
     public Anuncio cria(AnuncioForm anuncioForm) {
     	
-    	Usuario logado = usuarioService.getUsuarioPeloEmail(Util.emailUsuarioLogado());
-    	
-    	Anuncio anuncio = factory.criaAnuncio(anuncioForm, logado);
+    	Anuncio anuncio = factory.criaAnuncio(anuncioForm);
     	
         return anuncioRepository.save(anuncio);
     }
@@ -98,7 +96,7 @@ public class AnuncioServiceImpl implements InterfaceService<Anuncio, AnuncioForm
     	
     	
     	Usuario usuarioDebito = usuarioService.getUsuarioPeloEmail(Util.emailUsuarioLogado());
-    	Usuario usuarioCredito = anuncio.getUsuario();
+    	Usuario usuarioCredito = usuarioService.getUsuarioPeloEmail(anuncio.getEmailCriador());
     	
     	
     	double valor = anuncio.getPreco();

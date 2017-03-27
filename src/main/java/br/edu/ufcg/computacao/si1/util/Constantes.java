@@ -100,7 +100,7 @@ public class Constantes {
 	public static final String PRECO = "preco";
 	public static final String NOTA = "nota";
 	public static final String TIPO = "tipo";
-	public static final String USUARIO_ID = "usuario_id";
+	public static final String USUARIO_EMAIL = "usuario_email";
 	public static final String ANUNCIOEMPREGO = "AnuncioEmprego";
 	public static final String ANUNCIOIMOVEL = "AnuncioImovel";
 	public static final String ANUNCIOMOVEL = "AnuncioMovel";

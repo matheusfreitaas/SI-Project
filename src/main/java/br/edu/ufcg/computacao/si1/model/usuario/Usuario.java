@@ -2,11 +2,6 @@ package br.edu.ufcg.computacao.si1.model.usuario;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 
-import br.edu.ufcg.computacao.si1.model.anuncio.Anuncio;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.*;
 
 /**
@@ -39,9 +34,6 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
     
     @Column
     private double debito;
-    
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Anuncio> anuncios;
 
     /**
      * Construtor default
@@ -67,7 +59,6 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
         this.role = role;
         this.credito = 0;
         this.debito = 0;
-        this.anuncios = new ArrayList<>();
     }
 
     /**
@@ -180,22 +171,6 @@ public class Usuario extends org.springframework.security.core.userdetails.User{
 	 */
 	public void setDebito(double debito) {
 		this.debito = debito;
-	}
-	
-	/**
-	 * Retorna a lista de anúncios do usuário
-	 * @return lista de anúncios do usuário
-	 */
-	public List<Anuncio> getAnuncios() {
-		return anuncios;
-	}
-
-	/**
-	 * Modifica a lista de anúncios do usuário
-	 * @param debito Nova lista de anúncios do usuário
-	 */
-	public void setAnuncios(List<Anuncio> anuncios) {
-		this.anuncios = anuncios;
 	}
 
 	@Override

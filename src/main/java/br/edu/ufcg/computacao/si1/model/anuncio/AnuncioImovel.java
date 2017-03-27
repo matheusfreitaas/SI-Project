@@ -3,7 +3,6 @@ package br.edu.ufcg.computacao.si1.model.anuncio;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import br.edu.ufcg.computacao.si1.model.usuario.Usuario;
 import br.edu.ufcg.computacao.si1.util.Constantes;
 
 /**
@@ -23,8 +22,8 @@ public class AnuncioImovel extends Anuncio {
      * @param nota Nota do anúncio
      * @param tipo Tipo do anúncio
      */
-	public AnuncioImovel(String titulo, double preco, String tipo, Usuario dono){
-		super(titulo,preco,tipo,dono);
+	public AnuncioImovel(String titulo, double preco, String tipo, String emailUsuario){
+		super(titulo,preco,tipo,emailUsuario);
 	}
 	
 	/**

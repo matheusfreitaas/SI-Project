@@ -2,7 +2,6 @@ package br.edu.ufcg.computacao.si1.model.anuncio;
 
 import javax.persistence.*;
 
-import br.edu.ufcg.computacao.si1.model.usuario.Usuario;
 import br.edu.ufcg.computacao.si1.util.Constantes;
 
 import java.util.Date;
@@ -33,9 +32,8 @@ public abstract class Anuncio {
     @Column(name = Constantes.TIPO, nullable = false)
     private String tipo;
     
-    @ManyToOne
-    @JoinColumn(name= Constantes.USUARIO_ID)
-    private Usuario usuario;
+    @JoinColumn(name= Constantes.USUARIO_EMAIL)
+    private String emailCriador;
     
     /**
      * Construtor do objeto
@@ -44,12 +42,12 @@ public abstract class Anuncio {
      * @param tipo Tipo do anúncio
      * @param emailUsuario Email do criador do anúncio
      */
-    public Anuncio(String titulo, double preco, String tipo, Usuario dono) {
+    public Anuncio(String titulo, double preco, String tipo, String emailUsuario) {
         this.titulo = titulo;
         this.dataDeCriacao = new Date();
         this.preco = preco;
         this.tipo = tipo;
-        this.usuario = dono;
+        this.emailCriador = emailUsuario;
     }
 
     /**
@@ -143,19 +141,19 @@ public abstract class Anuncio {
     }
 
     /**
-     * Retorna o criador do anúncio
+     * Retorna o email do criador do anúncio
      * @return Email do criador do anúncio
      */
-    public Usuario getUsuario() {
-		return this.usuario;
+    public String getEmailCriador() {
+		return emailCriador;
 	}
 
     /**
-     * Modifica o criador do anúncio
+     * Modifica o email do criador do anúncio
      * @param email Novo email do criador do anúncio
      */
-	public void setUsuario(Usuario novoDono) {
-		this.usuario = novoDono;
+	public void setEmailCriador(String email) {
+		this.emailCriador = email;
 	}
 
 	@Override
@@ -193,7 +191,7 @@ public abstract class Anuncio {
                 ", titulo='" + titulo + '\'' +
                 ", dataDeCriacao=" + getDataDeCriacao() +
                 ", preco=" + preco +
-                ", tipo='" + tipo + '\'' + "Dono: "+usuario.getNome()+
+                ", tipo='" + tipo + '\'' + "Dono: "+emailCriador+
                 '}';
     }
 }
