@@ -2,6 +2,7 @@ package br.edu.ufcg.computacao.si1.model.anuncio;
 
 import javax.persistence.*;
 
+import br.edu.ufcg.computacao.si1.model.usuario.Usuario;
 import br.edu.ufcg.computacao.si1.util.Constantes;
 
 import java.util.Date;
@@ -32,8 +33,9 @@ public abstract class Anuncio {
     @Column(name = Constantes.TIPO, nullable = false)
     private String tipo;
     
-    @JoinColumn(name= Constantes.USUARIO_EMAIL)
-    private String emailCriador;
+    @ManyToOne
+    @JoinColumn(name= Constantes.USUARIO_ID)
+    private Usuario usuario;
     
     /**
      * Construtor do objeto
@@ -42,12 +44,12 @@ public abstract class Anuncio {
      * @param tipo Tipo do anúncio
      * @param emailUsuario Email do criador do anúncio
      */
-    public Anuncio(String titulo, double preco, String tipo, String emailUsuario) {
+    public Anuncio(String titulo, double preco, String tipo, Usuario dono) {
         this.titulo = titulo;
         this.dataDeCriacao = new Date();
         this.preco = preco;
         this.tipo = tipo;
-        this.emailCriador = emailUsuario;
+        this.usuario = dono;
     }
 
     /**
@@ -141,19 +143,19 @@ public abstract class Anuncio {
     }
 
     /**
-     * Retorna o email do criador do anúncio
+     * Retorna o criador do anúncio
      * @return Email do criador do anúncio
      */
-    public String getEmailCriador() {
-		return emailCriador;
+    public Usuario getUsuario() {
+		return this.usuario;
 	}
 
     /**
-     * Modifica o email do criador do anúncio
+     * Modifica o criador do anúncio
      * @param email Novo email do criador do anúncio
      */
-	public void setEmailCriador(String email) {
-		this.emailCriador = email;
+	public void setUsuario(Usuario novoDono) {
+		this.usuario = novoDono;
 	}
 
 	@Override
@@ -191,7 +193,7 @@ public abstract class Anuncio {
                 ", titulo='" + titulo + '\'' +
                 ", dataDeCriacao=" + getDataDeCriacao() +
                 ", preco=" + preco +
-                ", tipo='" + tipo + '\'' + "Dono: "+emailCriador+
+                ", tipo='" + tipo + '\'' + "Dono: "+usuario.getNome()+
                 '}';
     }
 }
